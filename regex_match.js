@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
 
-function translations_match(paths, allow_dublicates, search_for_variables, translation_variable_name){
+function translations_match(paths, allow_duplicates, search_for_variables, translation_variable_name){
 
     return new Promise((resolve, reject) => {
         
@@ -52,7 +52,7 @@ function translations_match(paths, allow_dublicates, search_for_variables, trans
             }
         })
 
-        if(!allow_dublicates){
+        if(!allow_duplicates){
             new_matches = _.uniq(new_matches);
         }
 
