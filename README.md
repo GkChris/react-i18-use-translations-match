@@ -45,3 +45,25 @@ Running the example skipping the optional parameter will return the following ar
 ```Javascript
 ["home"]
 ```
+
+
+#### Example with pathdoras-box
+
+Assuming you want to scan every react-app/src file to find your translations.
+You can use pathdoras-box to get paths and then call the translations_match function to receive an array that contains all your app's translations.
+
+```Javascript
+const {pathtool} = require('pathdoras-box');
+const {translations_match} = require('react-i18-use-translations-match');
+const your_path_to_src = '../react-app/src';
+
+
+async function get_translations(dirname){
+    var results = [];
+    let paths = await pathtool(dirname, results);
+    let keys = await translations_match(paths);
+    return keys;
+}
+
+get_translations(your_path_to_src)
+```
