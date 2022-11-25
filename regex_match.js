@@ -20,13 +20,20 @@ function translations_match(paths, allow_duplicates, search_for_variables, trans
             
             let file_matches;
     
-            const file = fs.readFileSync(path, 'utf8');
+            var file;
+            try{
+                file = fs.readFileSync(path, 'utf8');
+            } catch (err) {
+                console.log('err',err);
+            }
     
             let regex = `{${translation_variable_name}([(][^)]*[)])}`    
     
             regex = new RegExp(regex,'g');
             
-            file_matches = file.match(regex);   //Get translation -> example. {t("HOME")}
+            if(file){
+                file_matches = file.match(regex);   //Get translation -> example. {t("HOME")}
+            }
         
             if(file_matches){
                 let regex2 = new RegExp(/(?<=\()[^)]*(?=\))/g);     
