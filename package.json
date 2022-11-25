@@ -1,0 +1,29 @@
+{
+  "name": "react-i18-use-translations-match",
+  "version": "1.0.0",
+  "description": "A tool that returns an array with the translations from react-i18",
+  "main": "regex_match.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GkChris/react-i18_regex_match.git"
+  },
+  "keywords": [
+    "js",
+    "react-i18",
+    "regex",
+    "match",
+    "translations"
+  ],
+  "author": "gkchris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GkChris/react-i18_regex_match/issues"
+  },
+  "homepage": "https://github.com/GkChris/react-i18_regex_match#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
