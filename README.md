@@ -12,10 +12,14 @@ This tool is well compatible with the ***pathdoras-box*** tool. These two tools 
 Import the *translations_match* function.
 
 First parameter (Array of strings) contains paths. These are the paths that the translations_match searches with regex.
+Example. 
+```Javascript
+let paths = ["../react-app/src/pages/home.js", "../react-app/src/pages/about.js"] 
+```
 
-Second parameter (Optional - Boolean) is used to allow duplicates. Default is false.
+Second parameter (Optional - Boolean) is used to allow duplicates. Default is false. Pass true to return duplicates.
 
-Third parameter (Optional - Boolean) is used to switch between searching for hardcoded translations as {t('home')} to variables {t(home)}. Default is true, searching for hardcoded translations.
+Third parameter (Optional - Boolean) is used to switch between searching for hardcoded translations as {t('home')} to variables as {t(home)}. Default is falsem searching for hardcode. Pass true to search for variables.
 
 Fourth parameter (Optional - String) is the name of the translations variable (string). Default is 't'. 
 
