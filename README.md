@@ -47,7 +47,7 @@ Running the example skipping the optional parameter will return the following ar
 ```
 
 
-#### Example with pathdoras-box
+#### Combined with pathdoras-box example
 
 Assuming you want to scan every react-app/src file to find your translations.
 You can use pathdoras-box to get paths and then call the translations_match function to receive an array that contains all your app's translations.
@@ -66,4 +66,10 @@ async function get_translations(dirname){
 }
 
 get_translations(your_path_to_src)
+```
+
+To install pathdoras-box
+
+```
+npm i pathdoras-box
 ```
