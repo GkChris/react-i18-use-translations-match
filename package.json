@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GkChris/react-i18_regex_match.git"
+    "url": "https://github.com/GkChris/react-i18-use-translations-match.git"
   },
   "keywords": [
     "js",
@@ -20,9 +20,9 @@
   "author": "gkchris",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GkChris/react-i18_regex_match/issues"
+    "url": "https://github.com/GkChris/react-i18-use-translations-match/issues"
   },
-  "homepage": "https://github.com/GkChris/react-i18_regex_match#readme",
+  "homepage": "https://github.com/GkChris/react-i18-use-translations-match#readme",
   "dependencies": {
     "lodash": "^4.17.21"
   }
