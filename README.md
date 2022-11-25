@@ -13,23 +13,18 @@ Import the *translations_match* function.
 
 First parameter (Array of strings) contains paths. These are the paths that the translations_match searches with regex.
 
-Second parameter (Optional) is the name of the translations variable (string). Default is 't'. 
+Second parameter (Optional - Boolean) is used to allow duplicates. Default is false.
 
-Third parameter (Optional - Boolean) is used to allow dublicates. Default is false.
+Third parameter (Optional - Boolean) is used to switch between searching for hardcoded translations as {t('home')} to variables {t(home)}. Default is true, searching for hardcoded translations.
 
-Fourth parameter (Optional - Boolean) is used to switch between seearching for hardcoded translations as {t('home')} to variables {t(home)}. Default is true, searching for hardcoded translations.
+Fourth parameter (Optional - String) is the name of the translations variable (string). Default is 't'. 
 
 ```Javascript
 const {translations_match} = require('./regex_match');
 
 async function get_translations(){
     let paths = ["path/your_file.js", "path2/your_file2.js"];
-    let translations = await translations_match(
-        paths,
-        '<Your translation variable name>',
-        Boolean,
-        Boolean
-    );
+    let translations = await translations_match(paths);
     return translations;
 }
 
@@ -39,7 +34,7 @@ get_translations()
 
 #### Example
 
-Let's suppose you have the following translations in your react js file
+Assuming you have the following translations in your react js file
 
 ```Javascript
 {t("home")}

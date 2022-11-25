@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
 
-function translations_match(paths, translation_variable_name, allow_dublicates, search_for_variables){
+function translations_match(paths, allow_dublicates, search_for_variables, translation_variable_name){
 
     return new Promise((resolve, reject) => {
         

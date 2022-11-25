@@ -1,6 +1,6 @@
 {
   "name": "react-i18-use-translations-match",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool that returns an array with the translations from react-i18",
   "main": "regex_match.js",
   "scripts": {
