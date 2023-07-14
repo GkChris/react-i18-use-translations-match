@@ -13,6 +13,7 @@ function translations_match(paths, allow_duplicates, search_for_variables, trans
             var translation_variable_name = 't';    //default
         }
 
+        var forMatches = [];
         var matches = [];
         var new_matches = [];
 
@@ -27,43 +28,56 @@ function translations_match(paths, allow_duplicates, search_for_variables, trans
                 console.log('err',err);
             }
     
-            let regex = `{${translation_variable_name}([(][^)]*[)])}`    
-    
-            regex = new RegExp(regex,'g');
+            // let regex = `{${translation_variable_name}([(][^)]*[)])}`    
+            // regex = new RegExp(regex,'g');
+            let regex = new RegExp(/[{(]t\((['"])([^'"]*?)\1\)[})]/g); // NEW CODE
             
             if(file){
                 file_matches = file.match(regex);   //Get translation -> example. {t("HOME")}
             }
         
             if(file_matches){
-                let regex2 = new RegExp(/(?<=\()[^)]*(?=\))/g);     
-            
-                matches = file_matches.toString().match(regex2);    //convert to String -> example. "HOME"
+                // let regex2 = new RegExp(/(?<=\()[^)]*(?=\))/g);     
+                let regex2 = new RegExp(/(?<="|')(?:\\.|[^"'])*(?="|')/g); // NEW CODE
                 
-                for(let i = 0; i < matches.length; i++){
-
-                    let firstChar = matches[i];
-                    firstChar = firstChar.slice(0,1);
-
-                    if(search_for_variables){
-                        if(firstChar != '"' && firstChar != "'"){
-                            new_matches.push(matches[i]);
-                        }    
-                    }else{
-                        if(firstChar == '"' || firstChar == "'"){   
-                            matches[i] = matches[i].substring(1,matches[i].length-1);       //remove double quotes
-                            new_matches.push(matches[i]);
-                        }
-                    }
+                forMatches = file_matches.toString().match(regex2);    //convert to String -> example. "HOME"
+                
+                
+                for ( let match of forMatches ) {
+                    if ( match?.includes(')}') || match?.includes('))') || match?.includes('(t(') || match?.includes('{t(')) {
+                        continue;
+                    } else matches.push(match)
                 }
+               
+
+                // for(let i = 0; i < matches.length; i++){
+
+                //     let firstChar = matches[i];
+                //     firstChar = firstChar.slice(0,1);
+
+                //     if(search_for_variables){
+                //         if(firstChar != '"' && firstChar != "'"){
+                //             new_matches.push(matches[i]);
+                //         }    
+                //     }else{
+                //         if(firstChar == '"' || firstChar == "'"){   
+                //             matches[i] = matches[i].substring(1,matches[i].length-1);       //remove double quotes
+                //             new_matches.push(matches[i]);
+                //         }
+                //     }
+                // }
             }
         })
 
-        if(!allow_duplicates){
-            new_matches = _.uniq(new_matches);
+        // if(!allow_duplicates){
+        //     new_matches = _.uniq(new_matches);
+        // }
+
+        if(!allow_duplicates){ // NEW CODE
+            matches = _.uniq(matches);
         }
 
-        resolve(new_matches)
+        resolve(matches)
     })
       
 }
