@@ -30,15 +30,16 @@ function translations_match(paths, allow_duplicates, search_for_variables, trans
     
             // let regex = `{${translation_variable_name}([(][^)]*[)])}`    
             // regex = new RegExp(regex,'g');
-            let regex = new RegExp(/[{(]t\((['"])([^'"]*?)\1\)[})]/g); // NEW CODE
+            let regex = new RegExp(/[{(]t\((['"])([^]*?)\1\)[})]/g); // NEW CODE
+            // let regex = new RegExp(/{[(]t\((['"])(['"]?)([^'"]*?)\2\)[})]/g) // NEWER CODE
             
             if(file){
                 file_matches = file.match(regex);   //Get translation -> example. {t("HOME")}
             }
-        
+            console.log(file_matches);
             if(file_matches){
                 // let regex2 = new RegExp(/(?<=\()[^)]*(?=\))/g);     
-                let regex2 = new RegExp(/(?<="|')(?:\\.|[^"'])*(?="|')/g); // NEW CODE
+                let regex2 = new RegExp(/(?<=t\(['"])(.*?)(?=['"]\))/g); // NEW CODE
                 
                 forMatches = file_matches.toString().match(regex2);    //convert to String -> example. "HOME"
                 
